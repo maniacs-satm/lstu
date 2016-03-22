@@ -13,3 +13,5 @@ before_script:
   - apt-get install -y build-essential libssl-dev openssl
   - echo yes | cpan Carton
   - carton install
+  - cp lstu.conf.template lstu.conf
+  - sed -i -e "s@#contact@contact" lstu.conf
