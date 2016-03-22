@@ -10,6 +10,6 @@ job1:
     
 before_script:
   - apt-get update
-  - apt-get install -y build-essential libssl-dev
+  - apt-get install -y build-essential libssl-dev openssl
   - echo yes | cpan Carton
   - carton install
