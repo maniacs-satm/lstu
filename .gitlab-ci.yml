@@ -14,4 +14,4 @@ before_script:
   - echo yes | cpan Carton
   - carton install
   - cp lstu.conf.template lstu.conf
-  - sed -i -e "s@#contact@contact" lstu.conf
+  - sed -i -e "s@#contact@contact@" lstu.conf
