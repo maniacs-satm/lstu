@@ -9,6 +9,7 @@ job1:
     - Jessie
     
 before_script:
+  - apt-get update
   - apt-get install -y build-essential libssl-dev
   - echo yes | cpan Carton
   - carton install
