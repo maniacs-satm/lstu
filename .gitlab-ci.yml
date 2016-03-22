@@ -1,0 +1,14 @@
+image: debian:jessie
+job1:
+  script: 
+    - make test
+  only:
+    - test-ci
+  tags:
+    - Debian
+    - Jessie
+    
+before_script:
+  - apt-get install -y build-essential libssl-dev
+  - echo yes | cpan Carton
+  - carton install
