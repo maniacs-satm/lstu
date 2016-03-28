@@ -4,3 +4,5 @@ sessions.db
 lstu.db
 lstu.conf
 script/hypnotoad.pid
+*.swp
+*.bak
