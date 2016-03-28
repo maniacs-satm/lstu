@@ -60,8 +60,23 @@
     #fixed_domain => 'example.org',
 
     # define a path to the SQLite database
+    # DEPRECATED DEPRECATED
+    # You only need it if you haven't migrated to PostgreSQL yet.
     # you can define it relative to lstu directory or set an absolute path
     # remember that it has to be in a directory writable by Lstu user
     # optional, default is lstu.db
     #db_path           => 'lstu.db',
+
+
+    #########################
+    # Lstu database settings
+    #########################
+    # user and pwd are mandatory
+    # database and host are optionals (default: 'lstu' and 'localhost')
+    db => {
+        #database => 'lstu',
+        #host     => 'localhost',
+        user     => 'DBUSER',
+        pwd      => 'DBPASSWORD'
+    },
 };

@@ -2,11 +2,17 @@ image: debian:jessie
 job1:
   script: 
     - apt-get update
-    - apt-get install -y build-essential libssl-dev openssl
+    - apt-get install -y build-essential libssl-dev openssl postgresql libpq-dev
+    - service postgresql start
+    - sleep 5
+    - su -c "echo \"CREATE USER lstu WITH PASSWORD 'lstu';\" | psql" postgres
+    - su -c "createdb -O lstu lstu" postgres
     - echo yes | cpan Carton
     - carton install
     - cp lstu.conf.template lstu.conf
-    - sed -i -e "s@#contact@contact@" lstu.conf
+    - sed -i -e "s@#contact@contact@" -e "s@DBUSER@lstu@" -e "s@DBPASSWORD@lstu@" -e "s@#host@host@" -e "s@#database@database@" -e "s@#provis_step@provis_step@" lstu.conf
+    - make minion &
+    - sleep 5
     - make test
   tags:
     - Debian

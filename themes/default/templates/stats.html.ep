@@ -34,7 +34,7 @@
 %     $i = 1 + config('page_offset') * stash('page');
 % }
 % my $j = $i;
-% for my $url (@{$urls}) {
+% $urls->each( sub { my ($url, $num) = @_;
     <tr>
         <td><%= $i++ %></td>
         <td><%= link_to $url->{url} => $url->{url} %></td>
@@ -42,7 +42,7 @@
         <td><%= $url->{counter} %></td>
         <td><%= Mojo::Date->new($url->{timestamp})->to_string %></td>
     </tr>
-% }
+% });
 </table>
 % if (defined(config('adminpwd'))) {
 %     if (defined(stash('admin'))) {
